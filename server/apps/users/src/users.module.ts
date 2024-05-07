@@ -7,6 +7,8 @@ import {
   ApolloFederationDriverConfig,
 } from '@nestjs/apollo';
 import { ConfigService } from '@nestjs/config';
+import { PrismaService } from '../../../prisma/prisma.service';
+import { UsersResolver } from './users.resolver';
 
 @Module({
   imports: [
@@ -18,6 +20,6 @@ import { ConfigService } from '@nestjs/config';
     }),
   ],
   controllers: [UsersController],
-  providers: [UsersService, ConfigService], // configService - Configuration module for Nest based on the dotenv (to load process environment variables)
+  providers: [UsersService, ConfigService, PrismaService, UsersResolver], // configService - Configuration module for Nest based on the dotenv (to load process environment variables)
 })
 export class UsersModule {}
