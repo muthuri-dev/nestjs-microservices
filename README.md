@@ -1,2 +1,2 @@
-# food-derivery-microservices
+# nestjs-microservices
 nextjs, nestjs, graphql,prisma,mysql,tailwindcss
