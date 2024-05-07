@@ -16,7 +16,7 @@ export class RegisterResponse {
   user?: User | any;
 
   @Field(() => ErrorType, { nullable: true })
-  error: ErrorType;
+  error?: ErrorType;
 }
 
 @ObjectType()
@@ -27,3 +27,5 @@ export class LoginResponse {
   @Field(() => ErrorType, { nullable: true })
   error: ErrorType;
 }
+
+//In summary, DTOs are used for defining how data is sent over the network, Entities are used for interacting with the database, and Types are used for defining the shape of data that can be fetched from a GraphQL API.
