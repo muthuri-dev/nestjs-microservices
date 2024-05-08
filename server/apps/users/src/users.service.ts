@@ -14,7 +14,7 @@ export class UsersService {
 
   //register user service
   async register(registerDto: RegisterDto, response: Response) {
-    const { name, email, password } = registerDto;
+    const { name, email, password, phone_number } = registerDto;
 
     //checking if email aready exists in the database
     const isEmailExists = await this.prisma.user.findUnique({
@@ -23,8 +23,15 @@ export class UsersService {
     if (isEmailExists)
       throw new BadRequestException('User already exists with this email');
 
+    const isPhoneNumberExists = await this.prisma.user.findUnique({
+      where: { phone_number },
+    });
+
+    if (isPhoneNumberExists)
+      throw new BadRequestException('User with phone number already exists');
+
     const user = await this.prisma.user.create({
-      data: { name, email, password },
+      data: { name, email, password, phone_number },
     });
     return { user, response };
   }

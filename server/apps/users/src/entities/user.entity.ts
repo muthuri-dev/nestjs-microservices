@@ -28,6 +28,9 @@ export class User {
   email: string;
 
   @Field()
+  phone_number: number;
+
+  @Field()
   password: string;
 
   @Field(() => Avators, { nullable: true })
